@@ -90,3 +90,4 @@ Champion.all.each do |champion|
       ChampionAbility.create!(champion_id: champion.id, ability_id: ability.id, cooldown: rand(1..160) + " seconds")
     end
 end
+puts "Done!!!"
