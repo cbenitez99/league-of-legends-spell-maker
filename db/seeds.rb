@@ -1,7 +1,94 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+puts "Seeding summoners..."
+Summoner.create!([
+    {
+        name: "",
+        bio: ""
+    },
+    {
+        name: "",
+        bio: ""
+    },
+    {
+        name: "",
+        bio: ""
+    },
+    {
+        name: "",
+        bio: ""
+    },
+    {
+        name: "",
+        bio: ""
+    },
+    {
+        name: "",
+        bio: ""
+    },
+    {
+        name: "",
+        bio: ""
+    },
+    {
+        name: "",
+        bio: ""
+    },
+    {
+        name: "",
+        bio: ""
+    },
+    {
+        name: "",
+        bio: ""
+    }
+]),
+puts "Seeding summoner spells..."
+Spell.create!([
+    {
+        name: "",
+        description: "",
+    },
+    {
+        name: "",
+        description: "",
+    },
+    {
+        name: "",
+        description: "",
+    },
+    {
+        name: "",
+        description: "",
+    },
+    {
+        name: "",
+        description: "",
+    },
+    {
+        name: "",
+        description: "",
+    },
+    {
+        name: "",
+        description: "",
+    },
+    {
+        name: "",
+        description: "",
+    },
+    {
+        name: "",
+        description: "",
+    },
+    {
+        name: "",
+        description: "",
+    }
+]),
+puts "Giving spells to summoners"
+Summoner.all.each do |summoner|
+    rand(1..5).times do
+      spell = Spell.find(Spell.pluck(:id).sample)
+  
+      SummonerSpell.create!(summoner_id: summoner.id, spell_id: spell.id, cooldown: rand(1..160) + " seconds")
+    end
+end
