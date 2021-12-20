@@ -40,7 +40,7 @@ Champion.create!([
         name: "Viego",
         bio: "Once ruler of a long-lost kingdom, Viego perished over a thousand years ago when his attempt to bring his wife back from the dead triggered the magical catastrophe known as the Ruination. Transformed into a powerful, unliving wraith tortured by an obsessive longing for his centuries-dead queen, Viego now stands as the Ruined King, controlling the deadly Harrowings as he scours Runeterra for anything that might one day restore her, and destroying all in his path as the Black Mist pours endlessly from his cruel, broken heart."
     }
-]),
+])
 puts "Seeding abilities..."
 Ability.create!([
     {
@@ -83,11 +83,12 @@ Ability.create!([
         name: "HEARTBREAKER",
         description: "Viego teleports to a nearby location and executes an enemy champion on arrival, piercing their heart and causing a destructive shockwave around them that knocks away their allies.",
     }
-]),
+])
 puts "Giving abilities to champions"
 Champion.all.each do |champion|
-      ability = Ability.find_by(:id)
-      ChampionAbility.create!(champion_id: champion.id, ability_id: ability.id, cooldown: rand(1..160) + " seconds")
-    end
+    ability = Ability.find(Ability.pluck(:id).sample)
+    ChampionAbility.create!(champion_id: champion.id, ability_id: ability.id, cooldown: rand(1..160))
 end
+
+    
 puts "Done!!!"
