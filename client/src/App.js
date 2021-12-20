@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from "./components/Header";
 import ChampionAbilityForm from "./components/ChampionAbilityForm";
 import AbilityEditForm from "./components/AbilityEditForm"
@@ -15,15 +15,19 @@ function App() {
           <Route exact path="/champion_abilities/new">
             <ChampionAbilityForm />
           </Route>
+
           <Route exact path="/abilities/:id/edit">
             <AbilityEditForm />
           </Route>
+
           <Route exact path="/abilities/:id">
             <Ability />
           </Route>
+
           <Route exact path="/champions/:id">
             <Champion />
           </Route>
+
           <Route exact path="/">
             <Home />
           </Route>

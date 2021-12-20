@@ -4,8 +4,7 @@ function Header() {
     return (
         <div>
             <h1>
-                League of Legends Champions!
-                {/* <Link to="/">Champions</Link> */}
+                LoL Summoner Spell Maker
             </h1>
         </div>
     )

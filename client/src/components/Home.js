@@ -6,7 +6,7 @@ function Home(){
 
     useEffect(()=> {
         fetch("/champions")
-        .then((r) => r.json())
+        .then((res) => res.json())
         .then(setChampions);
     }, []);
 
@@ -14,7 +14,9 @@ function Home(){
         <div>
             <h2>Champion List</h2>
             <ul>
-                {/* map champs */}
+                {champions.map((champion)=>(
+                    <li>{champion.name}</li>
+                ))}
             </ul>
         </div>
     );
