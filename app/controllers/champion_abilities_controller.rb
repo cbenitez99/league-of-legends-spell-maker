@@ -1,2 +1,3 @@
 class ChampionAbilitiesController < ApplicationController
+   
 end

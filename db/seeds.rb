@@ -45,50 +45,51 @@ puts "Seeding abilities..."
 Ability.create!([
     {
         name: "WORLD ENDER",
-        description: "Aatrox unleashes his demonic form, fearing nearby enemy minions and gaining attack damage, increased healing, and movement speed. If he gets a takedown, this effect is extended.",
+        description: "Fear nearby enemy minions and gain attack damage, increased healing, and movement speed. Takedowns extend this effect.",
     },
     {
         name: "STATIC FIELD",
-        description: "Enemies attacked by Blitzcrank are marked and take lightning damage after 1 second. Additionally, Blitzcrank can activate this ability to remove nearby enemies' shields, damage them, and silence them briefly.",
+        description: "Enemies attacked are marked and take lightning damage after 1 second. Additionally, activate this ability to remove nearby enemies' shields, damage them, and silence them briefly.",
     },
     {
         name: "ACE IN THE HOLE",
-        description: "Caitlyn takes time to line up the perfect shot, dealing massive damage to a single target at a huge range. Enemy champions can intercept the bullet for their ally.",
+        description: "Deal massive damage to a single target at a huge range. Enemy champions can intercept the bullet for their ally.",
     },
     {
         name: "WHIRLING DEATH",
-        description: "Draven hurls two massive axes to deal physical damage to each unit struck. Whirling Death slowly reverses direction and returns to Draven after striking an enemy champion. Draven may also activate this ability while the axes are in flight to cause it to return early. Deals less damage for each unit hit and resets when the axes reverse direction. Executes enemies who have less health than Draven's number of Adoration stacks.",
+        description: "Hurl two massive axes to deal physical damage to each unit struck. Whirling Death slowly reverses direction and returns after striking an enemy champion. Activate this ability while the axes are in flight to cause it to return early. Deals less damage for each unit hit and resets when the axes reverse direction."
     },
     {
         name: "CHRONOBREAK",
-        description: "Ekko shatters his timeline, becoming untargetable and rewinding to a more favorable point in time. He returns to whenever he was a few seconds ago, and heals for a percentage of the damage received in that duration. Enemies near his arrival zone take massive damage.",
+        description: "Become untargetable and rewind to a more favorable point in time. Return to whenever you were a few seconds ago, and heal for a percentage of the damage received in that duration. Enemies near the arrival zone take massive damage.",
     },
     {
         name: "NEEDLEWORK",
-        description: "Gwen hurls a needle that slows enemies hit, deals magic damage, and applies A Thousand Cuts to champions hit. This ability can be cast up to two more times, with each cast throwing additional needles and dealing more damage. Gwen must hit an enemy between each cast to unlock the next one.",
+        description: "Hurls a needle that slows enemies hit, deals magic damage, and applies A Thousand Cuts to champions hit. This ability can be cast up to two more times, with each cast throwing additional needles and dealing more damage. Must hit an enemy between each cast to unlock the next one.",
     },
     {
         name: "LEAP OF FAITH",
-        description: "Illaoi smashes her golden sphere into the ground, dealing physical damage to nearby enemies. A Sea-Tentacle spawns for each enemy champion hit.",
+        description: "Smashes a golden sphere into the ground, dealing physical damage to nearby enemies. A Sea-Tentacle spawns for each enemy champion hit.",
     },
     {
         name: "CURTAIN CALL",
-        description: "Jhin channels, transforming Whisper into a shoulder-mounted mega-cannon. It is able to fire 4 super shots at extreme range that pierce through minions and monsters, but stop on the first champion impacted. Whisper cripples enemies hit, which slows them and deals execute damage. The 4th shot is perfectly crafted, epically powerful, and guaranteed to critically strike.",
+        description: "Weapon transforms into a shoulder-mounted mega-cannon. It is able to fire 4 super shots at extreme range that pierce through minions and monsters, but stop on the first champion impacted. It cripples enemies hit, which slows them and deals execute damage. The 4th shot is perfectly crafted, epically powerful, and guaranteed to critically strike.",
     },
     {
         name: "DRAGON'S RAGE",
-        description: "Lee Sin performs a powerful roundhouse kick launching his target back, dealing physical damage to the target and any enemies they collide with. Enemies the target collides with are knocked into the air for a short duration. This technique was taught to him by Jesse Perring, although Lee Sin does not kick players off the map.",
+        description: "Performs a powerful roundhouse kick launching his target back, dealing physical damage to the target and any enemies they collide with. Enemies the target collides with are knocked into the air for a short duration. This technique was taught to him by Jesse Perring, although Lee Sin does not kick players off the map.",
     },
     {
         name: "HEARTBREAKER",
-        description: "Viego teleports to a nearby location and executes an enemy champion on arrival, piercing their heart and causing a destructive shockwave around them that knocks away their allies.",
+        description: "Teleports to a nearby location and executes an enemy champion on arrival, piercing their heart and causing a destructive shockwave around them that knocks away their allies.",
     }
 ])
 puts "Giving abilities to champions"
 Champion.all.each do |champion|
     ability = Ability.find(Ability.pluck(:id).sample)
-    ChampionAbility.create!(champion_id: champion.id, ability_id: ability.id, cooldown: rand(1..160))
+    ChampionAbility.create!(champion_id: champion.id, ability_id: ability.id, cooldown: rand(1..60))
 end
 
     
 puts "Done!!!"
+

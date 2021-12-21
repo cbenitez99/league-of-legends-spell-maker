@@ -15,7 +15,9 @@ function Home(){
             <h2>Champion List</h2>
             <ul>
                 {champions.map((champion)=>(
-                    <li>{champion.name}</li>
+                    <div>
+                        <Link to='/'>{champion.name}</Link>
+                    </div>
                 ))}
             </ul>
         </div>
