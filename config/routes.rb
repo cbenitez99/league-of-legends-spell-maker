@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :champion_abilities, only: [:create, :destroy]
+  resources :champion_abilities, only: [:create]
   resources :champions, only: [:index, :show]
   resources :abilities, only: [:index, :show]
   patch '/abilities/:id', to: "abilities#update"

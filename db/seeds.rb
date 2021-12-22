@@ -85,9 +85,10 @@ Ability.create!([
     }
 ])
 puts "Giving abilities to champions"
+cooldowns = [10, 20, 30, 40, 50, 60]
 Champion.all.each do |champion|
     ability = Ability.find(Ability.pluck(:id).sample)
-    ChampionAbility.create!(champion_id: champion.id, ability_id: ability.id, cooldown: rand(1..60))
+    ChampionAbility.create!(champion_id: champion.id, ability_id: ability.id, cooldown: cooldowns.sample)
 end
 
     
