@@ -3,4 +3,7 @@ class AbilitiesController < ApplicationController
         abilities = Ability.all
         render json: abilities
     end
+
+    def show
+    end
 end

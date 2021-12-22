@@ -9,7 +9,7 @@ class ChampionsController < ApplicationController
         if champion
             render json: champion, include: :abilities, except: [:created_at, :updated_at], status: :ok
         else
-            render json: {errors: "Champion not found!"}, status: :unprocessable_entity
+            render json: {error: "Champion not found!"}, status: :not_found
         end
     end
 
