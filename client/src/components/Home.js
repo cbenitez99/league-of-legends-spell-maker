@@ -6,18 +6,18 @@ function Home(){
 
     useEffect(()=> {
         fetch("/champions")
-        .then((res) => res.json())
+        .then((response) => response.json())
         .then(setChampions);
     }, []);
 
     return (
         <div>
-            <h2>Champion List</h2>
+            <h2>Select a Champion</h2>
             <ul>
                 {champions.map((champion)=>(
-                    <div>
-                        <Link to='/'>{champion.name}</Link>
-                    </div>
+                    <li key={champion.id}>
+                        <Link to={`/champions/${champion.id}`}>{champion.name}</Link>
+                    </li>
                 ))}
             </ul>
         </div>

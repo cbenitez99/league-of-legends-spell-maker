@@ -2,11 +2,11 @@ import {Link} from "react-router-dom"
 
 function Header() {
     return (
-        <div>
+        <header>
             <h1>
-                LoL Summoner Spell Maker
+                <Link to="/"> LoL Summoner Spell Maker </Link>
             </h1>
-        </div>
+        </header>
     )
 }
 
