@@ -4,9 +4,9 @@ import { useHistory } from "react-router";
 function ChampionAbilityForm() {
   const [champions, setChampions] = useState([]);
   const [abilities, setAbilities] = useState([]);
-  const [championId, setChampionId] = useState("");
-  const [abilityId, setAbilityId] = useState("");
-  const [cooldown, setCooldown] = useState("");
+  const [champion_id, setChampionId] = useState("");
+  const [ability_id, setAbilityId] = useState("");
+  const [cooldown, setCooldown] = useState(0);
   const [formErrors, setFormErrors] = useState([]);
   const history = useHistory();
 
@@ -25,9 +25,9 @@ function ChampionAbilityForm() {
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
-      champion_id: championId,
-      ability_id: abilityId,
-      cooldown,
+      champion_id: champion_id,
+      ability_id: ability_id,
+      cooldown: cooldown
     };
     fetch("/champion_abilities", {
       method: "POST",
@@ -37,7 +37,7 @@ function ChampionAbilityForm() {
       body: JSON.stringify(formData),
     }).then((r) => {
       if (r.ok) {
-        history.push(`/champions/${championId}`);
+        history.push(`/champions/${champion_id}`);
       } else {
         r.json().then((err) => setFormErrors(err.errors));
       }
@@ -50,7 +50,7 @@ function ChampionAbilityForm() {
       <select
         id="ability_id"
         name="ability_id"
-        value={abilityId}
+        value={ability_id}
         onChange={(e) => setAbilityId(e.target.value)}
       >
         <option value="">Select an ability</option>
@@ -64,7 +64,7 @@ function ChampionAbilityForm() {
       <select
         id="champion_id"
         name="champion_id"
-        value={championId}
+        value={champion_id}
         onChange={(e) => setChampionId(e.target.value)}
       >
         <option value="">Select a champion</option>
@@ -74,7 +74,7 @@ function ChampionAbilityForm() {
           </option>
         ))}
       </select>
-      <label htmlFor="cooldown">Cooldown:</label>
+      <label htmlFor="cooldown">Description:</label>
       <input
         type="integer"
         id="cooldown"

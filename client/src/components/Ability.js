@@ -26,16 +26,21 @@ function Ability() {
   if (status === "pending") return <h1>Loading...</h1>;
   if (status === "rejected") return <h1>Error: {error.error}</h1>;
 
+  function handleClick(){
+    
+  }
+
   return (
     <section>
       <h2>{ability.name}</h2>
       <p>{ability.description}</p>
       <p>
-        <Link to="/champion_abilities/new">Add Champion ability</Link>
+        <Link to="/champion_abilities/new">Add ability to Champion</Link>
       </p>
       <p>
         <Link to={`/abilities/${ability.id}/edit`}>Edit Ability Description</Link>
       </p>
+      <p>Remove This Ability: "{ability.name}"<button onClick={handleClick}>x</button></p>
     </section>
   );
 }
