@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import ChampionAbilityForm from "./ChampionAbilityForm";
+// import ChampionAbilityForm from "./ChampionAbilityForm";
 
 function Champion() {
   const [{ data: champion, error, status }, setChampion] = useState({
@@ -30,7 +30,7 @@ function Champion() {
   return (
     <section>
       <h2>{champion.name}</h2>
-
+      <h5><em>"{champion.bio}"</em></h5>
       <h3>This Champion's Abilities:</h3>
       <ul>
         {champion.abilities.map((ability) => (
@@ -40,7 +40,7 @@ function Champion() {
         ))}
       </ul>
 
-      <Link to="/champion_abilities/new">Click to add more!</Link>
+      <Link to="/champion_abilities/new">Add Champion Spell</Link>
     </section>
   );
 }

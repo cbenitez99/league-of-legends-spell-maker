@@ -6,7 +6,7 @@ function ChampionAbilityForm() {
   const [abilities, setAbilities] = useState([]);
   const [champion_id, setChampionId] = useState("");
   const [ability_id, setAbilityId] = useState("");
-  const [cooldown, setCooldown] = useState(0);
+  const [cooldown, setCooldown] = useState([]);
   const [formErrors, setFormErrors] = useState([]);
   const history = useHistory();
 
@@ -27,7 +27,7 @@ function ChampionAbilityForm() {
     const formData = {
       champion_id: champion_id,
       ability_id: ability_id,
-      cooldown: cooldown
+      cooldown
     };
     fetch("/champion_abilities", {
       method: "POST",
@@ -76,7 +76,9 @@ function ChampionAbilityForm() {
       </select>
       <label htmlFor="cooldown">Description:</label>
       <input
-        type="integer"
+        type="number"
+        min="1"
+        max="60"
         id="cooldown"
         name="cooldown"
         value={cooldown}
@@ -84,7 +86,7 @@ function ChampionAbilityForm() {
       />
       {formErrors.length > 0
         ? formErrors.map((err) => (
-            <p key={err} style={{ color: "red" }}>
+            <p key={err} style={{ color: "orange" }}>
               {err}
             </p>
           ))
