@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-// import ChampionAbilityForm from "./ChampionAbilityForm";
 
-function Champion() {
+function Champion({champion_abilities, handleDelete}) {
+  
   const [{ data: champion, error, status }, setChampion] = useState({
     data: null,
     error: null,

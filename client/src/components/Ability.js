@@ -2,6 +2,20 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function Ability() {
+
+  const [championAbilities, setChampionAbilities] = useState([])
+
+  function handleDelete(id){
+    fetch(`/abilities/${id}`, {
+        method: "DELETE"
+      }).then((r) => {
+        if (r.ok) {
+          setChampionAbilities((abilities)=>
+          abilities.filter((ability) => ability.id !== id));
+        }
+    });
+  }
+
   const [{ data: ability, error, status }, setAbility] = useState({
     data: null,
     error: null,
@@ -36,7 +50,7 @@ function Ability() {
       <p>
         <Link to={`/abilities/${ability.id}/edit`}>Edit Ability Description</Link>
       </p>
-      {/* <p>Remove This Ability: "{ability.name}"<button onClick={handleClick}>x</button></p> */}
+      <button onClick={()=>handleDelete(ability.id)}><Link to="/">Remove This Ability: "{ability.name}"x</Link></button>
     </section>
   );
 }

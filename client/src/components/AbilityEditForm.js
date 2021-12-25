@@ -49,9 +49,10 @@ function AbilityEditForm(){
       }
     return (
       <form onSubmit={handleSubmit}>
-      <h2>Editing {ability.name}</h2>
-      <label htmlFor="description">Description:</label>
+      <h2>Editing: {ability.name}</h2>
+      <p>Description: {ability.description}</p>
       <textarea
+      placeholder={ability.description}
         id="description"
         name="description"
         rows="4"
@@ -65,6 +66,7 @@ function AbilityEditForm(){
             </p>
           ))
         : null}
+        <br/>
       <button type="submit">Update Ability</button>
     </form>
     )

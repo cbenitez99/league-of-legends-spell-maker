@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import Champion from "./Champion";
 
 function Home(){
     const [champions, setChampions] = useState([]);
@@ -8,7 +7,7 @@ function Home(){
     useEffect(()=> {
         fetch("/champions")
         .then((response) => response.json())
-        .then(setChampions);
+        .then((data) => setChampions(data));
     }, []);
 
     return (

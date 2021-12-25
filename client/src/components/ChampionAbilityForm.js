@@ -22,6 +22,9 @@ function ChampionAbilityForm() {
       .then(setAbilities);
   }, []);
 
+  
+  
+
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
@@ -74,10 +77,10 @@ function ChampionAbilityForm() {
           </option>
         ))}
       </select>
-      <label htmlFor="cooldown">Description:</label>
+      <label htmlFor="cooldown">Cooldown-Timer:</label>
       <input
         type="number"
-        min="1"
+        min="0"
         max="60"
         id="cooldown"
         name="cooldown"

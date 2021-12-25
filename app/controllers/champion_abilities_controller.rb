@@ -8,6 +8,11 @@ class ChampionAbilitiesController < ApplicationController
         end
    end
 
+   def show
+    champion_ability = ChampionAbility.find_by(id: params[:id])
+    render json: champion_ability, include: :ability
+   end
+
    private 
    def champion_ability_params
     params.permit(:champion_id, :ability_id, :cooldown)
