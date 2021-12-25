@@ -50,7 +50,7 @@ function Ability() {
       <p>
         <Link to={`/abilities/${ability.id}/edit`}>Edit Ability Description</Link>
       </p>
-      <button onClick={()=>handleDelete(ability.id)}><Link to="/">Remove This Ability: "{ability.name}"x</Link></button>
+      <button onClick={()=>handleDelete(ability.id)}><Link to="/">Delete: "{ability.name}"</Link></button>
     </section>
   );
 }
