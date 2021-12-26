@@ -16,13 +16,12 @@ function ChampionAbilityForm() {
       .then(setChampions);
   }, []);
 
+  
   useEffect(() => {
     fetch("/abilities")
       .then((r) => r.json())
       .then(setAbilities);
   }, []);
-
-  
   
 
   function handleSubmit(e) {

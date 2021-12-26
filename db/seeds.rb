@@ -1,4 +1,7 @@
 puts "Seeding champions..."
+Champion.destroy_all
+Ability.destroy_all
+ChampionAbility.destroy_all
 Champion.create!([
     {
         name: "Aatrox",

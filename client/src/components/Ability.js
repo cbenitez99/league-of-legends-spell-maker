@@ -7,7 +7,7 @@ function Ability() {
 
   function handleDelete(id){
     fetch(`/abilities/${id}`, {
-        method: "DELETE"
+        method: "DELETE",
       }).then((r) => {
         if (r.ok) {
           setChampionAbilities((abilities)=>
@@ -21,6 +21,7 @@ function Ability() {
     error: null,
     status: "pending",
   });
+
   const { id } = useParams();
 
   useEffect(() => {
