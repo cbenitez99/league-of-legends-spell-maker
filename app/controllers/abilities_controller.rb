@@ -1,13 +1,17 @@
 class AbilitiesController < ApplicationController
     def index
         abilities = Ability.all
-        render json: abilities, status: :ok
+        if abilities
+            render json: abilities, status: :ok
+        else
+            render json: {error: "No abilities here!"}, status: :not_found
+        end
     end
 
     def show
         ability = find_ability
         if ability
-            render json: ability
+            render json: ability, status: :ok
             # byebug
         else
             render json: {error: "Ability not found"}, status: :not_found

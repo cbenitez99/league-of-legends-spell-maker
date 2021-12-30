@@ -9,6 +9,7 @@ function Ability() {
     fetch(`/abilities/${id}`, {
         method: "DELETE",
       }).then((r) => {
+        console.log(r)
         if (r.ok) {
           setChampionAbilities((abilities)=>
           abilities.filter((ability) => ability.id !== id));

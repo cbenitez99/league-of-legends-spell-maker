@@ -10,11 +10,16 @@ class ChampionAbilitiesController < ApplicationController
 
    def show
     champion_ability = ChampionAbility.find_by(id: params[:id])
-    render json: champion_ability, include: :ability
+        if champion_ability
+            render json: champion_ability, include: :ability
+        else
+            render json: {error: "Ability not found."}, status: :not_found
+        end
    end
 
    private 
    def champion_ability_params
     params.permit(:champion_id, :ability_id, :cooldown)
    end
+   
 end
