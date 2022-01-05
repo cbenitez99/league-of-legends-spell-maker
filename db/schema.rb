@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_003332) do
+ActiveRecord::Schema.define(version: 2022_01_05_233701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2021_12_21_003332) do
   create_table "champion_abilities", force: :cascade do |t|
     t.integer "champion_id"
     t.integer "ability_id"
-    t.integer "cooldown"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -33,13 +32,14 @@ ActiveRecord::Schema.define(version: 2021_12_21_003332) do
   create_table "champions", force: :cascade do |t|
     t.string "name"
     t.string "bio"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "logins", force: :cascade do |t|
-    t.string "user_name"
-    t.string "password"
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,15 +1,37 @@
 import { Route, Switch } from 'react-router-dom';
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import ChampionAbilityForm from "./components/ChampionAbilityForm";
 import AbilityEditForm from "./components/AbilityEditForm"
 import Ability from "./components/Ability"
 import Champion from "./components/Champion"
 import Home from "./components/Home"
+import {useState, useEffect} from "react"
 
 function App() {
+  const [abilities, setAbilities] = useState([]);
+
+  useEffect(() => {
+    fetch("/abilities")
+      .then((r) => r.json())
+      .then((data) => {
+        setAbilities(data)
+      });
+  }, []);
+  
+  const [champions, setChampions] = useState([])
+
+  useEffect(() => {
+    fetch("/champions")
+      .then((r) => r.json())
+      .then((data) => {
+        setChampions(data)
+      });
+  }, []);
+  
+
   return (
     <div>
-      <Header />
+      <Navbar />
       <main>
         <Switch>
           <Route exact path="/champion_abilities/new">
@@ -21,11 +43,11 @@ function App() {
           </Route>
 
           <Route exact path="/abilities/:id">
-            <Ability />
+            <Ability abilities={abilities}/>
           </Route>
 
           <Route exact path="/champions/:id">
-            <Champion />
+            <Champion champions={champions}/>
           </Route>
 
           <Route exact path="/">

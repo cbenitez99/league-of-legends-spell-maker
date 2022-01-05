@@ -1,27 +1,37 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 
-function Home(){
-    const [champions, setChampions] = useState([]);
+// function Home(){
+//     const [champions, setChampions] = useState([]);
 
-    useEffect(()=> {
-        fetch("/champions")
-        .then((response) => response.json())
-        .then((data) => setChampions(data));
-    }, []);
+//     useEffect(()=> {
+//         fetch("/champions")
+//         .then((response) => response.json())
+//         .then((data) => setChampions(data));
+//     }, []);
 
+//     return (
+//         <div>
+//             <h2>Select Your Champion!</h2>
+//             <ul>
+//                 {champions.map((champion)=>(
+//                     <li key={champion.id}>
+//                         <Link to={`/champions/${champion.id}`}>{champion.name}</Link>
+//                     </li>
+//                 ))}
+//             </ul>
+//         </div>
+//     );
+// }
+
+// export default Home;
+
+import React from 'react'
+
+export default function Home() {
     return (
         <div>
-            <h2>Select Your Champion!</h2>
-            <ul>
-                {champions.map((champion)=>(
-                    <li key={champion.id}>
-                        <Link to={`/champions/${champion.id}`}>{champion.name}</Link>
-                    </li>
-                ))}
-            </ul>
+            <h3>WELCOME TO THE LEAGUE OF LEGENDS SPELL MAKER</h3>
         </div>
-    );
+    )
 }
-
-export default Home;

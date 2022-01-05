@@ -1,4 +1,5 @@
 class AbilitiesController < ApplicationController
+
     def index
         abilities = Ability.all
         if abilities
@@ -46,4 +47,6 @@ class AbilitiesController < ApplicationController
     def find_ability
         Ability.find_by(id: params[:id])
     end
+
 end
+

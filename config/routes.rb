@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :champion_abilities, only: [:create, :show]
+  resources :users
   resources :champions, only: [:index, :show]
-  resources :abilities, only: [:index, :show, :destroy]
+  resources :abilities, only: [:index, :destroy, :create]
   patch '/abilities/:id', to: "abilities#update"
 
   # Routing logic: fallback requests for React Router.

@@ -3,6 +3,7 @@ class CreateChampions < ActiveRecord::Migration[6.1]
     create_table :champions do |t|
       t.string :name
       t.string :bio
+      t.string :image
 
       t.timestamps
     end
