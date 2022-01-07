@@ -1,6 +1,7 @@
 puts "Seeding champions..."
 Champion.destroy_all
 Ability.destroy_all
+# User.destroy_all
 Champion.create([
     {
         name: "Aatrox",
@@ -58,55 +59,66 @@ Ability.create([
     {
         name: "WORLD ENDER",
         description: "Fear nearby enemy minions and gain attack damage, increased healing, and movement speed. Takedowns extend this effect.",
-        champion_id: 1
+        champion_id: 1,
+        user_id: 1
     },
     {
         name: "STATIC FIELD",
         description: "Enemies attacked are marked and take lightning damage after 1 second. Additionally, activate this ability to remove nearby enemies' shields, damage them, and silence them briefly.",
-        champion_id: 2
+        champion_id: 2,
+        user_id: 1
     },
     {
         name: "ACE IN THE HOLE",
         description: "Deal massive damage to a single target at a huge range. Enemy champions can intercept the bullet for their ally.",
-        champion_id: 3
+        champion_id: 3,
+        user_id: 1
     },
     {
         name: "WHIRLING DEATH",
         description: "Hurl two massive axes to deal physical damage to each unit struck. Whirling Death slowly reverses direction and returns after striking an enemy champion. Activate this ability while the axes are in flight to cause it to return early. Deals less damage for each unit hit and resets when the axes reverse direction.",
-        champion_id: 4
+        champion_id: 4,
+        user_id: 1
     },
     {
         name: "CHRONOBREAK",
         description: "Become untargetable and rewind to a more favorable point in time. Return to whenever you were a few seconds ago, and heal for a percentage of the damage received in that duration. Enemies near the arrival zone take massive damage.",
-        champion_id: 5
+        champion_id: 5,
+        user_id: 1
     },
     {
         name: "NEEDLEWORK",
         description: "Hurls a needle that slows enemies hit, deals magic damage, and applies A Thousand Cuts to champions hit. This ability can be cast up to two more times, with each cast throwing additional needles and dealing more damage. Must hit an enemy between each cast to unlock the next one.",
-        champion_id: 6
+        champion_id: 6,
+        user_id: 1
     },
     {
         name: "LEAP OF FAITH",
         description: "Smashes a golden sphere into the ground, dealing physical damage to nearby enemies. A Sea-Tentacle spawns for each enemy champion hit.",
-        champion_id: 7
+        champion_id: 7,
+        user_id: 1
     },
     {
         name: "CURTAIN CALL",
         description: "Weapon transforms into a shoulder-mounted mega-cannon. It is able to fire 4 super shots at extreme range that pierce through minions and monsters, but stop on the first champion impacted. It cripples enemies hit, which slows them and deals execute damage. The 4th shot is perfectly crafted, epically powerful, and guaranteed to critically strike.",
-        champion_id: 8
+        champion_id: 8,
+        user_id: 1
     },
     {
         name: "DRAGON'S RAGE",
         description: "Performs a powerful roundhouse kick launching his target back, dealing physical damage to the target and any enemies they collide with. Enemies the target collides with are knocked into the air for a short duration. This technique was taught to him by Jesse Perring, although Lee Sin does not kick players off the map.",
-        champion_id: 9
+        champion_id: 9,
+        user_id: 1
     },
     {
         name: "HEARTBREAKER",
         description: "Teleports to a nearby location and executes an enemy champion on arrival, piercing their heart and causing a destructive shockwave around them that knocks away their allies.",
-        champion_id: 10
+        champion_id: 10,
+        user_id: 1
     }
 ])
-
+puts "Creating Default Profile..."
+User.create([username: "Cris", password_digest: "1234"])
     
 puts "Done!!!"
 

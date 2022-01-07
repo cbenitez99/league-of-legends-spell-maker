@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2022_01_05_212854) do
   create_table "abilities", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.integer "user_id"
     t.integer "champion_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
