@@ -2,7 +2,7 @@ class ChampionsController < ApplicationController
     def index
         champions = Champion.all
         if champions
-            render json: champions, except: [:created_at, :updated_at], status: :ok
+            render json: champions, include: :abilities, except: [:created_at, :updated_at], status: :ok
         else
             render json: {error: "No champions here!"}, status: :not_found
         end

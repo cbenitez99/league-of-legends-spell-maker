@@ -6,7 +6,7 @@ Champion.create([
     {
         name: "Aatrox",
         bio: "Once honored defenders of Shurima against the Void, Aatrox and his brethren would eventually become an even greater threat to Runeterra, and were defeated only by cunning mortal sorcery. But after centuries of imprisonment, Aatrox was the first to find freedom once more, corrupting and transforming those foolish enough to try and wield the magical weapon that contained his essence. Now, with stolen flesh, he walks Runeterra in a brutal approximation of his previous form, seeking an apocalyptic and long overdue vengeance.",
-        image: "https://static.wikia.nocookie.net/leagueoflegends/images/6/67/Aatrox_OriginalCentered.jpg/revision/latest/scale-to-width-down/1280?cb=20180626200206"
+        image: "https://www.pcgamesn.com/wp-content/uploads/legacy/aatrox_rework_2-590x332.jpg"
     },
     {
         name: "Blitzcrank",
@@ -46,7 +46,7 @@ Champion.create([
     {
         name: "Lee Sin",
         bio: "A master of Ionia's ancient martial arts, Lee Sin is a principled fighter who channels the essence of the dragon spirit to face any challenge. Though he lost his sight many years ago, the warrior-monk has devoted his life to protecting his homeland against any who would dare upset its sacred balance. Enemies who underestimate his meditative demeanor will endure his fabled burning fists and blazing roundhouse kicks.",
-        image: "https://static.wikia.nocookie.net/leagueoflegends/images/a/a8/Lee_Sin_OriginalCentered.jpg/revision/latest/scale-to-width-down/1280?cb=20180414203354"
+        image: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/LeeSin_0.jpg"
     },
     {
         name: "Viego",

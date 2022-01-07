@@ -59,3 +59,17 @@
 // }
 
 // export default Ability;
+import React from 'react'
+
+export default function Ability({abilities}) {
+    const mappedAbilities = abilities.map((ability)=> 
+    <div>
+        <h2>{ability.name}</h2>
+        <p>{ability.description}</p>
+    </div>)
+    return (
+        <div>
+            {mappedAbilities}
+        </div>
+    )
+}

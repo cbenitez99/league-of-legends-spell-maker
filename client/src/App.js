@@ -8,6 +8,7 @@ import Home from "./components/Home"
 import {useState, useEffect} from "react"
 
 function App() {
+
   const [abilities, setAbilities] = useState([]);
 
   useEffect(() => {
@@ -27,7 +28,6 @@ function App() {
         setChampions(data)
       });
   }, []);
-  
 
   return (
     <div>
@@ -35,18 +35,18 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/champion_abilities/new">
-            <ChampionAbilityForm />
+            <ChampionAbilityForm abilities={abilities}/>
           </Route>
 
           <Route exact path="/abilities/:id/edit">
             <AbilityEditForm />
           </Route>
 
-          <Route exact path="/abilities/:id">
+          <Route exact path="/abilities">
             <Ability abilities={abilities}/>
           </Route>
 
-          <Route exact path="/champions/:id">
+          <Route exact path="/champions">
             <Champion champions={champions}/>
           </Route>
 
