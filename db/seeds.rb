@@ -1,8 +1,7 @@
 puts "Seeding champions..."
 Champion.destroy_all
 Ability.destroy_all
-ChampionAbility.destroy_all
-Champion.create!([
+Champion.create([
     {
         name: "Aatrox",
         bio: "Once honored defenders of Shurima against the Void, Aatrox and his brethren would eventually become an even greater threat to Runeterra, and were defeated only by cunning mortal sorcery. But after centuries of imprisonment, Aatrox was the first to find freedom once more, corrupting and transforming those foolish enough to try and wield the magical weapon that contained his essence. Now, with stolen flesh, he walks Runeterra in a brutal approximation of his previous form, seeking an apocalyptic and long overdue vengeance.",
@@ -55,7 +54,7 @@ Champion.create!([
     }
 ])
 puts "Seeding abilities..."
-Ability.create!([
+Ability.create([
     {
         name: "WORLD ENDER",
         description: "Fear nearby enemy minions and gain attack damage, increased healing, and movement speed. Takedowns extend this effect.",
