@@ -7,19 +7,20 @@ import Champion from "./components/Champion"
 import Home from "./components/Home"
 import {useState, useEffect} from "react"
 
-function App() {
 
+
+function App() {
+  
+  const [champions, setChampions] = useState([])
   const [abilities, setAbilities] = useState([]);
 
   useEffect(() => {
-    fetch("/abilities")
+    fetch('/abilities')
       .then((r) => r.json())
       .then((data) => {
         setAbilities(data)
-      });
+      })
   }, []);
-  
-  const [champions, setChampions] = useState([])
 
   useEffect(() => {
     fetch("/champions")
@@ -28,6 +29,15 @@ function App() {
         setChampions(data)
       });
   }, []);
+  // const [champion, setChampion] = useState([])
+  // const {id} = useParams()
+
+  // useEffect(()=>{
+  //     if(!!champions) {
+  //         let selectedChampion = champions.filter((champion) => champion.id === Number(id))
+  //         setChampion({...selectedChampion})
+  //     }
+  // }, [id, setChampion, champions])
 
   return (
     <div>
@@ -35,15 +45,15 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/champion_abilities/new">
-            <ChampionAbilityForm abilities={abilities}/>
+            {/* <ChampionAbilityForm abilities={abilities}/> */}
           </Route>
 
-          <Route exact path="/abilities/:id/edit">
-            <AbilityEditForm />
+          <Route exact path="/champions/:id/edit">
+            <AbilityEditForm/>
           </Route>
 
-          <Route exact path="/abilities">
-            <Ability abilities={abilities}/>
+          <Route exact path="/champions/:id">
+            <Ability champions={champions}/>
           </Route>
 
           <Route exact path="/champions">

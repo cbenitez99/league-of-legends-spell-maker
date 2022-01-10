@@ -7,10 +7,11 @@
 
 import React from 'react'
 
-export default function Home() {
+function Home() {
     return (
         <div>
             <h3>WELCOME TO THE LEAGUE OF LEGENDS SPELL MAKER</h3>
         </div>
     )
 }
+export default Home;

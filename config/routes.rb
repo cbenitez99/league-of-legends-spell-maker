@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :champions, only: [:index, :show]
+  resources :users, only: [:index]
+  resources :champions, only: [:index, :show] 
   resources :abilities, only: [:index, :show, :destroy, :create]
   patch '/abilities/:id', to: "abilities#update"
 

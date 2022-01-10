@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function Navbar() {
+function Navbar() {
     return (
         <div>
             <nav className='black'>
@@ -18,5 +18,6 @@ export default function Navbar() {
         </div> 
     )
 }
+export default Navbar;
 
 

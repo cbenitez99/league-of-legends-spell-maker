@@ -49,7 +49,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function Champion({champions}) {
+function Champion({champions}) {
   
   return (
     <div>
@@ -60,9 +60,10 @@ export default function Champion({champions}) {
         <li>{champion.bio}</li>
         <img src={champion.image} alt={champion.name}></img>
         <br/>
-        <NavLink to="/abilities">See Abilities</NavLink>
+        <NavLink to={`/champions/${champion.id}`}>See Abilities</NavLink>
       </div>
       )}
     </div>
   )
 }
+export default Champion;
