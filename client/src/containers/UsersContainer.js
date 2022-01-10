@@ -1,13 +1,14 @@
-import React from 'react'
-import {Routes, Route} from "react-router-dom"
-import Profile from '../components/Profile'
+// import React from 'react'
+// import {Route} from "react-router-dom"
+// import Profile from '../components/Profile'
 
-export default function UsersContainer({user}) {
-    return (
-        <div>
-            <Routes>
-                <Route path=":id" element={<Profile user={user} />}></Route>
-            </Routes>
-        </div>
-    )
-}
+// function UsersContainer({user}) {
+//     return (
+//         <div>
+//             <Route path=":id">
+//                 <Profile user={user}/>
+//             </Route>
+//         </div>
+//     )
+// }
+// export default UsersContainer;

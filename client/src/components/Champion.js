@@ -50,7 +50,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 function Champion({champions}) {
-  console.log(champions)
   
   return (
     <div>

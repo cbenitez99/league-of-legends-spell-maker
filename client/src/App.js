@@ -1,9 +1,10 @@
 import { Route, Switch } from 'react-router-dom';
 import {useState, useEffect} from "react"
-import SignupForm from './components/SignupForm';
-import LoginForm from './components/LoginForm';
+// import SignupForm from './components/SignupForm';
+// import LoginForm from './components/LoginForm';
 import Navbar from "./components/Navbar";
-import ChampionAbilityForm from "./components/ChampionAbilityForm";
+// import UsersContainer from './containers/UsersContainer';
+// import ChampionAbilityForm from "./components/ChampionAbilityForm";
 import AbilityEditForm from "./components/AbilityEditForm"
 import Ability from "./components/Ability"
 import Champion from "./components/Champion"
@@ -57,13 +58,15 @@ function App() {
             <Champion champions={champions}/>
           </Route>
 
-          <Route exact path="/login">
+          {/* <Route exact path="/login">
             <LoginForm setUser={setUser}/>
           </Route>
 
           <Route exact path="/signup">
             <SignupForm setUser={setUser}/>
-          </Route>
+          </Route> */}
+          
+          {/* <Route path="users/*" element={<UsersContainer user={user}/>}/> */}
 
           <Route exact path="/">
             <Home />

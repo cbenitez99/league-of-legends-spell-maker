@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-function Navbar() {
+function Navbar({user, setUser}) {
     return (
         <div>
             <nav className='black'>
@@ -12,6 +12,29 @@ function Navbar() {
                         <li><NavLink to="/signup">Signup</NavLink></li>
                         <li><NavLink to="/champions">Champion List</NavLink></li>
                         <li><NavLink to="/champions/abilities/new">Create Ability</NavLink></li>
+                        {/* {!!user.id ? 
+                        <div>
+                            <li><NavLink to={`/users/${user.id}`}>Profile</NavLink></li>
+                            <li><a href="/delete" onClick={(e) => {
+                                e.preventDefault()
+                                fetch('/logout', {
+                                    method: "DELETE",
+                                    headers: {
+                                        "Accept": "application/json",
+                                        "Content-Type": "application/json"
+                                    }
+                                }).then(resp => {
+                                    setUser({})
+                                    // navigate("/")
+                                })
+                            }}>Logout</a></li>
+                        </div>
+                        :
+                        <div>
+                            <li><NavLink to="/signup" >Signup</NavLink></li>
+                            <li><NavLink to="/login" >Login</NavLink></li>
+                        </div>
+                        } */}
                     </ul>
                 </div>
             </nav>
