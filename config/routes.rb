@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index]
+  resources :users
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
   resources :champions, only: [:index, :show] 
   resources :abilities, only: [:index, :show, :destroy, :create]
   patch '/abilities/:id', to: "abilities#update"

@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
 import {useNavigate} from "react-router-dom"
 
-function SignupForm({setUser}) {
-
-    let navigate = useNavigate();
+function LoginForm({setUser}) {
+    let navigate = useNavigate()
 
 
     const [formData, setFormData] = useState({
@@ -26,7 +25,7 @@ function SignupForm({setUser}) {
         let params = {
           ...formData  
         }
-        fetch("/users", {
+        fetch("/login", {
             method: "POST",
             headers: {
                 "Accept": "application/json",
@@ -43,7 +42,7 @@ function SignupForm({setUser}) {
 
     return (
         <div className="text-white">
-            <h1>SignUp</h1>
+            <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
                 <input onChange={handleChange} type="text" name="username" value={formData.username}/>
@@ -54,4 +53,4 @@ function SignupForm({setUser}) {
         </div>
     )
 }
-export default SignupForm;
+export default LoginForm;

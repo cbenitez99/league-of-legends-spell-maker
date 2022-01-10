@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import {useState, useEffect} from "react"
 import SignupForm from './components/SignupForm';
+import LoginForm from './components/LoginForm';
 import Navbar from "./components/Navbar";
 import ChampionAbilityForm from "./components/ChampionAbilityForm";
 import AbilityEditForm from "./components/AbilityEditForm"
@@ -15,7 +16,8 @@ function App() {
   
   const [champions, setChampions] = useState([])
   const [abilities, setAbilities] = useState([]);
-  const [token, setToken] = useState();
+  const [user, setUser] = useState({})
+
 
   useEffect(() => {
     fetch("/champions")
@@ -26,17 +28,17 @@ function App() {
   }, []);
 
 
-  // useEffect(() => {
-  //   fetch('/abilities')
-  //     .then((r) => r.json())
-  //     .then((data) => {
-  //       setAbilities(data)
-  //     })
-  // }, []);
+  useEffect(() => {
+    fetch('/abilities')
+      .then((r) => r.json())
+      .then((data) => {
+        setAbilities(data)
+      })
+  }, []);
 
   return (
     <div>
-      <Navbar />
+      <Navbar user={user} setUser={setUser}/>
       <main>
         <Switch>
           <Route exact path="/champion_abilities/new">
@@ -55,8 +57,12 @@ function App() {
             <Champion champions={champions}/>
           </Route>
 
+          <Route exact path="/login">
+            <LoginForm setUser={setUser}/>
+          </Route>
+
           <Route exact path="/signup">
-            <SignupForm/>
+            <SignupForm setUser={setUser}/>
           </Route>
 
           <Route exact path="/">

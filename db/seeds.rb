@@ -1,7 +1,9 @@
-puts "Seeding champions..."
 Champion.destroy_all
 Ability.destroy_all
-# User.destroy_all
+puts "creating user"
+user = User.create(username: "Cris", password_digest: "1234")
+puts "Seeding champions..."
+
 Champion.create([
     {
         name: "Aatrox",
@@ -118,7 +120,6 @@ Ability.create([
     }
 ])
 puts "Creating Default Profile..."
-User.create([username: "Cris", password_digest: "1234"])
     
 puts "Done!!!"
 
