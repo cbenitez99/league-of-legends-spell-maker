@@ -1,11 +1,13 @@
 import { Route, Switch } from 'react-router-dom';
+import {useState, useEffect} from "react"
+import SignupForm from './components/SignupForm';
 import Navbar from "./components/Navbar";
 import ChampionAbilityForm from "./components/ChampionAbilityForm";
 import AbilityEditForm from "./components/AbilityEditForm"
 import Ability from "./components/Ability"
 import Champion from "./components/Champion"
 import Home from "./components/Home"
-import {useState, useEffect} from "react"
+
 
 
 
@@ -13,14 +15,7 @@ function App() {
   
   const [champions, setChampions] = useState([])
   const [abilities, setAbilities] = useState([]);
-
-  useEffect(() => {
-    fetch('/abilities')
-      .then((r) => r.json())
-      .then((data) => {
-        setAbilities(data)
-      })
-  }, []);
+  const [token, setToken] = useState();
 
   useEffect(() => {
     fetch("/champions")
@@ -29,15 +24,15 @@ function App() {
         setChampions(data)
       });
   }, []);
-  // const [champion, setChampion] = useState([])
-  // const {id} = useParams()
 
-  // useEffect(()=>{
-  //     if(!!champions) {
-  //         let selectedChampion = champions.filter((champion) => champion.id === Number(id))
-  //         setChampion({...selectedChampion})
-  //     }
-  // }, [id, setChampion, champions])
+
+  // useEffect(() => {
+  //   fetch('/abilities')
+  //     .then((r) => r.json())
+  //     .then((data) => {
+  //       setAbilities(data)
+  //     })
+  // }, []);
 
   return (
     <div>
@@ -58,6 +53,10 @@ function App() {
 
           <Route exact path="/champions">
             <Champion champions={champions}/>
+          </Route>
+
+          <Route exact path="/signup">
+            <SignupForm/>
           </Route>
 
           <Route exact path="/">

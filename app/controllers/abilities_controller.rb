@@ -13,7 +13,6 @@ class AbilitiesController < ApplicationController
         ability = find_ability
         if ability
             render json: ability, status: :ok
-            # byebug
         else
             render json: {error: "Ability not found"}, status: :not_found
         end
