@@ -1,6 +1,6 @@
-import { Route, Switch } from 'react-router-dom';
 import {useState, useEffect} from "react"
-// import SignupForm from './components/SignupForm';
+import { Routes, Route } from "react-router-dom";
+import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import Navbar from "./components/Navbar";
 import AbilityEditForm from "./components/AbilityEditForm"
@@ -11,10 +11,10 @@ import Home from "./components/Home"
 
 
 
-function App() {
+export default function App() {
   
   const [champions, setChampions] = useState([])
-  const [abilities, setAbilities] = useState([]);
+  // const [abilities, setAbilities] = useState([]);
   const [user, setUser] = useState({})
 
 
@@ -27,47 +27,38 @@ function App() {
   }, []);
 
 
-  useEffect(() => {
-    fetch('/abilities')
-      .then((r) => r.json())
-      .then((data) => {
-        setAbilities(data)
-      })
-  }, []);
+  // useEffect(() => {
+  //   fetch('/abilities')
+  //     .then((r) => r.json())
+  //     .then((data) => {
+  //       setAbilities(data)
+  //     })
+  // }, []);
 
-  return (
-    <div>
-      <Navbar user={user} setUser={setUser}/>
-      <main>
-        <Switch>
-        
-          <Route exact path="/champions/:id/edit">
-            <AbilityEditForm/>
-          </Route>
+  if(user) {
+    return (
+      <div>
+          <Navbar user={user} onLogout={setUser}/>
+            <main>
+              <Routes>
+                <Route path="/champions/:id/edit" element={<AbilityEditForm />}></Route>
+                <Route path="/champions/:id" element={<Ability champions={champions}/>}></Route>
+                <Route path="/champions" element={<Champion champions={champions}/>}></Route>
+                <Route path="/login" element={<LoginForm />}></Route>
+                <Route path="/signup" element={<SignupForm />}></Route>
+                <Route path="/" element={<Home />} ></Route>
+              </Routes>
+            </main>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <Navbar/>
+          <LoginForm onLogin={setUser} />
+      </div>
+    )
+  };
 
-          <Route exact path="/champions/:id">
-            <Ability champions={champions}/>
-          </Route>
-
-          <Route exact path="/champions">
-            <Champion champions={champions}/>
-          </Route>
-
-          <Route exact path="/login">
-            <LoginForm setUser={setUser}/>
-          </Route>
-
-          {/* <Route exact path="/signup">
-            <SignupForm setUser={setUser}/>
-          </Route> */}
-    
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </main>
-    </div>
-  );
 }
 
-export default App;

@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function AbilityEditForm() {
   const [{ data: ability, errors, status }, setAbility] = useState({
@@ -7,7 +7,7 @@ function AbilityEditForm() {
     errors: [],
     status: "pending",
   });
-  const history = useHistory()
+  // const history = useHistory()
   const {id} = useParams()
   const [description, setDescription] = useState("")
   
@@ -39,7 +39,7 @@ function AbilityEditForm() {
         }),
         }).then((r) => {
           if (r.ok) {
-            history.push(`/champions/${id}`);
+            console.log(`/champions/${id}`);
           } else {
             r.json().then((err) =>
               setAbility({ data: ability, errors: err.errors, status: "rejected" })

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-function Navbar({user, setUser}) {
+function Navbar({user, setUser, Onlogout}) {
     return (
         <div>
             <nav className='black'>

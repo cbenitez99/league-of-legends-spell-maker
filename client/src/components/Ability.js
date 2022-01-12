@@ -16,10 +16,12 @@ function Ability({champions}) {
         <div>
             {!!champion.id ? 
             <div>{champion.abilities.map((champAbility)=>
-                <div>
+                <div key={champAbility.id}>
                     <h1>{champAbility.name}</h1>
                     <p>{champAbility.description}</p>
                     <NavLink to={`/champions/${champion.id}/edit`}>Edit Ability</NavLink>
+                    <br/>
+                    <NavLink to={`/champions/${champion.id}/edit`}>Add New Ability</NavLink>
                 </div>
                 )}
             </div> : 

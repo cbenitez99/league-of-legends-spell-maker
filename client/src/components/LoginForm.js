@@ -1,9 +1,7 @@
 import React, {useState} from 'react'
-// import {useNavigate} from "react-router-dom"
-
-function LoginForm({setUser}) {
-    // let navigate = useNavigate();
-
+import {useNavigate} from 'react-router-dom';
+function LoginForm({onLogin}) {
+    let navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: "",
         password: ""
@@ -34,7 +32,8 @@ function LoginForm({setUser}) {
         })
         .then(resp => resp.json())
         .then(json => {
-            setUser(json)
+            onLogin(json)
+            // history.push(`/users/${json.id}`)
             // navigate(`/users/${json.id}`)
         })
     }
