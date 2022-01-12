@@ -2,7 +2,7 @@
 Champion.destroy_all
 Ability.destroy_all
 puts "creating user"
-user = User.create(username: "Cristian", password_digest: "1234")
+# user = User.create(username: "Cristian", password_digest: "1234")
 puts "creating champion"
 # champion = Champion.create(name: "Jinx", bio: "Absolutely bonkers, and has a thing against her sister, Vi.", image: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jinx_0.jpg")
 puts "creating ability"

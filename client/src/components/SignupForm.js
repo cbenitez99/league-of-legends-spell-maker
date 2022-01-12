@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-function SignupForm({onLogout}) {
+function SignupForm({setUser}) {
     let navigate = useNavigate()
 
     const [formData, setFormData] = useState({
@@ -26,15 +26,15 @@ function SignupForm({onLogout}) {
         fetch("/users", {
             method: "POST",
             headers: {
-                "Accept": "application/json",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(params)
         })
         .then(resp => resp.json())
         .then(json => {
-            onLogout(json)
-            navigate(`/home`)
+            console.log(json)
+            setUser(json)
+            navigate(`/login`)
         })
     }
 

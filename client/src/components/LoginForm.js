@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
-import {useNavigate} from 'react-router-dom';
-function LoginForm({onLogin}) {
+import {useNavigate} from "react-router-dom"
+
+export default function LoginForm({setUser}) {
     let navigate = useNavigate();
+
+
     const [formData, setFormData] = useState({
         username: "",
         password: ""
@@ -32,9 +35,8 @@ function LoginForm({onLogin}) {
         })
         .then(resp => resp.json())
         .then(json => {
-            onLogin(json)
-            // history.push(`/users/${json.id}`)
-            // navigate(`/users/${json.id}`)
+            setUser(json)
+            navigate(`/`)
         })
     }
 
@@ -46,9 +48,8 @@ function LoginForm({onLogin}) {
                 <input onChange={handleChange} type="text" name="username" value={formData.username}/>
                 <label htmlFor="password">Password:</label>
                 <input onChange={handleChange} type="password" name="password" value={formData.password}/>
-                <button type="submit">Login</button>
+                <button type="submit">Log in</button>
             </form>
         </div>
     )
 }
-export default LoginForm;

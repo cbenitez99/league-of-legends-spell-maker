@@ -1,55 +1,74 @@
-// import { React, useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
-// function AbilityCreateForm({handlePost}) {
-//     // let navigate = useNavigate();    
-//     const {id} = useParams();
+import { React, useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-//     // useEffect(()=>{
-//     //     if(!!champions) {
-//     //         let selectedChampion = champions.find((champion) => champion.id === Number(id))
-//     //         setChampions({...selectedChampion})
-//     //     }
-//     // }, [setChampions, id, champions])
+function AbilityCreateForm() {
+  const [{ data: ability, errors, status }, setAbility] = useState({
+    data: null,
+    errors: [],
+    status: "pending",
+  });
+  let navigate = useNavigate()
+  const {id} = useParams()
+  const [name, setName] = useState("")
+  const [description, setDescription] = useState("")
+  
+    useEffect(() => {
+      fetch(`/abilities/${id}`).then((r)=>{
+        if (r.ok) {
+          r.json().then((ability) => {
+            setAbility({data: ability, errors: [], status: "resolved"});
+          });
+        } else {
+          r.json().then((error) =>
+            setAbility({data: null, errors: [error.error], status: "rejected"})
+          );
+        }
+      });
+    }, [id]);
+        
+  if (status === "pending") return <h3>Loading...</h3>
 
-//     const [formData, setFormData] = useState({
-//         name: "",
-//         description: "",
-//     });
-    
-//     function handleSubmit(e) {
-//         e.preventDefault()
-//         fetch(`/abilities/${id}`, {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify({
-//                 description
-//             }),
-//             }).then((r) => {
-//               if (r.ok) {
-//                 navigate(`/champions/${id}`)
-//               } else {
-//                 r.json().then((err) =>
-//                   setAbility({ data: ability, errors: err.errors, status: "rejected" })
-//                 );
-//               }
-//             });
-//       };
+  function handleSubmit(e) {
+    e.preventDefault()
+    fetch(`/abilities/${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            description
+        }),
+        }).then((r) => {
+          if (r.ok) {
+            navigate(`/champions/${id}`)
+          } else {
+            r.json().then((err) =>
+              setAbility({ data: ability, errors: err.errors, status: "rejected" })
+            );
+          }
+        });
+  };
 
-//     function handleChange(event){
-//         if(event.target.value === ""){
-//             setFormData({name: "Unkown ability", description: "No description given"})
-//         }
-//         setFormData({...formData, [event.target.id] : event.target.value});
-//     };  
-          
-//   return (
-//     <form onSubmit={handleSubmit}>
-//         <input id="name" type="text" placeholder="Enter ability name" onChange={handleChange} value={formData.name}/>
-//         <textarea id="description" type="text" placeholder="Enter ability description..." onChange={handleChange} value={formData.description}/>
-//         <button type="submit"> Add Ability </button> 
-//     </form>
-//     )
-// };
-// export default AbilityCreateForm;
+  function refreshPage() {
+    window.location.reload(true);
+  }
+      
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>{ability.name}</h2>
+      <h6>Description: {ability.description}</h6>
+        <textarea
+          placeholder="Enter description..."
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        {errors.length > 0
+          ? errors.map((err) => (
+              <p key={err} style={{ color: "red" }}>
+                {err}
+              </p>
+            ))
+          : null}
+        <br/>
+      <button onClick={() => refreshPage()} type="submit">Update Ability</button>
+    </form>
+    )
+}
+export default AbilityCreateForm;
