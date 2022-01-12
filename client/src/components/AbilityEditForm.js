@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function AbilityEditForm() {
   const [{ data: ability, errors, status }, setAbility] = useState({
@@ -7,7 +7,7 @@ function AbilityEditForm() {
     errors: [],
     status: "pending",
   });
-  // const history = useHistory()
+  let navigate = useNavigate()
   const {id} = useParams()
   const [description, setDescription] = useState("")
   
@@ -26,7 +26,7 @@ function AbilityEditForm() {
     }, [id]);
         
   if (status === "pending") return <h3>Loading...</h3>
-            
+
   function handleSubmit(e) {
     e.preventDefault()
     fetch(`/abilities/${id}`, {
@@ -39,15 +39,19 @@ function AbilityEditForm() {
         }),
         }).then((r) => {
           if (r.ok) {
-            console.log(`/champions/${id}`);
+            navigate(`/champions/${id}`)
           } else {
             r.json().then((err) =>
               setAbility({ data: ability, errors: err.errors, status: "rejected" })
             );
           }
         });
+  };
+
+  function refreshPage() {
+    window.location.reload(true);
   }
-          
+      
   return (
     <form onSubmit={handleSubmit}>
       <h2>{ability.name}</h2>
@@ -64,7 +68,7 @@ function AbilityEditForm() {
             ))
           : null}
         <br/>
-      <button type="submit">Update Ability</button>
+      <button onClick={() => refreshPage()} type="submit">Update Ability</button>
     </form>
     )
 }
