@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users do
-    resources :abilities
+  resources :users, only: [:index, :show, :create, :destroy] do
+    resources :abilities, except: [:index, :show, :create, :update, :destroy]
   end
   resources :champions, only: [:index, :show] 
   resources :abilities, only: [:index, :show, :destroy, :create]

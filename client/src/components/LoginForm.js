@@ -28,13 +28,13 @@ export default function LoginForm({setUser}) {
         fetch("/login", {
             method: "POST",
             headers: {
-                "Accept": "application/json",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(params)
         })
         .then(resp => resp.json())
         .then(json => {
+            console.log(json)
             setUser(json)
             navigate(`/`)
         })

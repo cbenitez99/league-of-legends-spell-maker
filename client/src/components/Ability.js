@@ -21,7 +21,7 @@ function Ability({champions}) {
                     <p>{champAbility.description}</p>
                     <NavLink to={`/champions/${champion.id}/edit`}>Edit Ability</NavLink>
                     <br/>
-                    <NavLink to={`/champions/${champion.id}/edit`}>Add New Ability</NavLink>
+                    <NavLink to={`/champions/${champion.id}/new`}>Add New Ability</NavLink>
                 </div>
                 )}
             </div> : 

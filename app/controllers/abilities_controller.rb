@@ -39,25 +39,17 @@ class AbilitiesController < ApplicationController
 
     def create
         ability = Ability.new(ability_params)
-        
-            begin
-                if ability.save
-                render json: ability, include: :champions, status: :created
-            else
-                render json: {errors: ability.errors.full_messages}, status: :unprocessable_entity
-            end
-
-            rescue ActiveModel::ValidationError => invalid
-                render json: {errors: invalid.model.errors}, status: :unprocessable_entity
-            end
-            
-        
+        if ability.save
+            render json: ability, status: :created
+        else
+            render json: {errors: ability.errors.full_messages}, status: :unprocessable_entity
+        end
     end
 
     private 
 
     def ability_params
-        params.permit(:name, :description)
+        params.permit(:name, :description, :champion_id)
     end
 
     def find_ability

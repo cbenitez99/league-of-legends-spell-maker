@@ -12,12 +12,19 @@ import Home from "./components/Home"
 
 
 
-export default function App() {
+function App() {
   
   const [champions, setChampions] = useState([])
   // const [abilities, setAbilities] = useState([]);
   const [user, setUser] = useState({})
 
+  // useEffect(() => {
+  //   fetch(`abilities`)
+  //     .then((r) => r.json())
+  //     .then((data) => {
+  //       setAbilities(data)
+  //     })
+  // }, []);
 
   useEffect(() => {
     fetch("/champions")
@@ -27,31 +34,22 @@ export default function App() {
       });
   }, []);
 
-
-  // useEffect(() => {
-  //   fetch('/abilities')
-  //     .then((r) => r.json())
-  //     .then((data) => {
-  //       setAbilities(data)
-  //     })
-  // }, []);
-
-  
     return (
       <div>
           <Navbar user={user} onLogout={setUser}/>
             <main>
               <Routes>
-                <Route path="/users/:id/abilities" element={<AbilityCreateForm />}></Route>
-                <Route path="/champions/:id/edit" element={<AbilityEditForm />}></Route>
-                <Route path="/champions/:id" element={<Ability champions={champions}/>}></Route>
-                <Route path="/champions" element={<Champion champions={champions}/>}></Route>
-                <Route path="/login" element={<LoginForm setUser={setUser}/>}></Route>
-                <Route path="/signup" element={<SignupForm setUser={setUser}/>}></Route>
-                <Route path="/" element={<Home />} ></Route>
+                <Route path="/champions/:id/new" element={<AbilityCreateForm champions={champions} setChampions={setChampions}/>}></Route>
+                <Route exact path="/champions/:id/edit" element={<AbilityEditForm />}></Route>
+                <Route exact path="/champions/:id" element={<Ability champions={champions}/>}></Route>
+                <Route exact path="/champions" element={<Champion champions={champions}/>}></Route>
+                <Route exact path="/login" element={<LoginForm setUser={setUser}/>}></Route>
+                <Route exact path="/signup" element={<SignupForm setUser={setUser}/>}></Route>
+                <Route exact path="/" element={<Home/>} ></Route>
               </Routes>
             </main>
       </div>
     )
 }
 
+export default App;
