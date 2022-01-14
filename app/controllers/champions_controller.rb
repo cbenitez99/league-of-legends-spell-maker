@@ -10,7 +10,9 @@ class ChampionsController < ApplicationController
     end
 
     # def index
-    #     if session[:user_id]
+    #     byebug
+    #     if session[:username]
+    #         byebug
     #         champions = Champion.all
     #         if champions
     #             render json: champions, include: :abilities, except: [:created_at, :updated_at], status: :ok
@@ -22,27 +24,27 @@ class ChampionsController < ApplicationController
     #     end
     # end
     
-    def show
-        champion = Champion.find_by(id: params[:id])
-        if champion
-            render json: champion, include: :abilities, except: [:created_at, :updated_at], status: :ok
-        else
-            render json: {error: "Champion not found!"}, status: :not_found
-        end
-    end
-
     # def show
-    #     if session[:user_id]
-    #         champion = Champion.find_by(id: params[:id])
-    #         if champion
-    #             render json: champion, include: :abilities, except: [:created_at, :updated_at], status: :ok
-    #         else
-    #             render json: {errors: "Champion not found!"}, status: :not_found
-    #         end
+    #     champion = Champion.find_by(id: params[:id])
+    #     if champion
+    #         render json: champion, include: :abilities, except: [:created_at, :updated_at], status: :ok
     #     else
-    #         render json: {errors: "Must be logged in to view champions!"}, status: :unauthorized
+    #         render json: {error: "Champion not found!"}, status: :not_found
     #     end
     # end
+
+    def show
+        if session[:username]
+            champion = Champion.find_by(id: params[:id])
+            if champion
+                render json: champion, include: :abilities, except: [:created_at, :updated_at], status: :ok
+            else
+                render json: {errors: "Champion not found!"}, status: :not_found
+            end
+        else
+            render json: {errors: "Must be logged in to view champions!"}, status: :unauthorized
+        end
+    end
     
 
 end

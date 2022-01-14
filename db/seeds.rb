@@ -2,7 +2,7 @@
 Champion.destroy_all
 Ability.destroy_all
 puts "creating users"
-# userMain = User.create(username: "Cristian",password_digest: "coder")
+userMain = User.create(username: "Cristian", password_digest: "coder123")
 # userGuest1 = User.create(username: "Alex",password_digest: "1234")
 # userGuest2 = User.create(username: "Apple",password_digest: "0skill")
 

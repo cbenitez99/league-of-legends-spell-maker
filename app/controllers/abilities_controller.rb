@@ -3,7 +3,7 @@ class AbilitiesController < ApplicationController
     def index
         abilities = Ability.all
         if abilities
-            render json: abilities, include: :champion, status: :ok
+            render json: abilities, include: :champions, status: :ok
         else
             render json: {error: "No abilities here!"}, status: :not_found
         end
@@ -49,7 +49,7 @@ class AbilitiesController < ApplicationController
     private 
 
     def ability_params
-        params.permit(:name, :description, :champion_id)
+        params.permit(:name, :description)
     end
 
     def find_ability

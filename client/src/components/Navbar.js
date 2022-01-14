@@ -20,7 +20,8 @@ function Navbar({onLogout}) {
                                     headers: { "Content-Type": "application/json" }
                                 }).then(resp => {
                                     console.log(resp)
-                                     onLogout({}); navigate("/login")
+                                     onLogout({resp})
+                                    //  navigate("/login") 
                         })}}>Logout</a>
                         </li>
                     </ul>

@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 function SignupForm({setUser}) {
     let navigate = useNavigate()
+    const {id} = useParams()
 
     const [formData, setFormData] = useState({
         username: "",
-        password: ""
+        password: "",
     })
 
 
@@ -33,7 +34,7 @@ function SignupForm({setUser}) {
         .then(resp => resp.json())
         .then(json => {
             console.log(json)
-            setUser(json)
+            // setUser(json)
             navigate(`/login`)
         })
     }

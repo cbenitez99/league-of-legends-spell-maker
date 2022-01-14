@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :show, :create, :destroy] do
-    resources :abilities, except: [:index, :show, :create, :update, :destroy]
-  end
+  resources :users, only: [:create, :destroy]
   resources :champions, only: [:index, :show] 
   resources :abilities, only: [:index, :show, :destroy, :create]
   patch '/abilities/:id', to: "abilities#update"
