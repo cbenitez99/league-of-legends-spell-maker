@@ -36,7 +36,7 @@ function LoginForm({setUser}) {
         .then(json => {
             console.log(json)
             // setUser(json)
-            // navigate(`/`)
+            navigate(`/champions`)
         })
     }
 

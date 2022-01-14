@@ -50,7 +50,7 @@ class AbilitiesController < ApplicationController
     private 
 
     def ability_params
-        params.require(:ability).permit(:name, :description, :user_id, :champion_id)
+        params.require(:ability).permit(:name, :description)
     end
 
     def find_ability

@@ -1,10 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import {useParams} from 'react-router-dom'
 // import {useNavigate} from "react-router-dom"
 
-function AbilityCreateForm() {
+function AbilityCreateForm({champions}) {
     
-    // const [champion, setChampion] = useState([])
+    const [champion, setChampion] = useState([])
+    const {id} = useParams()
 
+    useEffect(()=>{
+        if(!!champions) {
+            let selectedChampion = champions.find((champion) => champion.id === Number(id))
+            setChampion({...selectedChampion})
+        }
+    }, [setChampion, id, champions])
     // let navigate = useNavigate();
 
     const [formData, setFormData] = useState({

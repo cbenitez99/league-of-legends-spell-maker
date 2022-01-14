@@ -39,7 +39,7 @@ function App() {
           <Navbar user={user} onLogout={setUser}/>
             <main>
               <Routes>
-                <Route path="/champions/:id/new" element={<AbilityCreateForm champions={champions} setChampions={setChampions}/>}></Route>
+                <Route path="/champions/:id/abilities/new" element={<AbilityCreateForm champions={champions} setChampions={setChampions}/>}></Route>
                 <Route exact path="/champions/:id/edit" element={<AbilityEditForm />}></Route>
                 <Route exact path="/champions/:id" element={<Ability champions={champions}/>}></Route>
                 <Route exact path="/champions" element={<Champion champions={champions}/>}></Route>

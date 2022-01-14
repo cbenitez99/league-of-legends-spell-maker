@@ -11,7 +11,7 @@ function Navbar({onLogout}) {
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><NavLink to="/login">Login</NavLink></li>
                         <li><NavLink to="/signup">Signup</NavLink></li>
-                        <li><NavLink to="/champions">Champion List</NavLink></li>
+                        {/* <li><NavLink to="/champions">Champion List</NavLink></li> */}
                         <li><NavLink to="/champions/abilities/new">Create Ability</NavLink></li>
                         <li><a href="/login" onClick={(e) => {
                                 e.preventDefault()

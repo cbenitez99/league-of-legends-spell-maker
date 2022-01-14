@@ -34,17 +34,16 @@ class ChampionsController < ApplicationController
     # end
 
     def show
-        if session[:username]
+        # if session[:username]
             champion = Champion.find_by(id: params[:id])
             if champion
                 render json: champion, include: :abilities, except: [:created_at, :updated_at], status: :ok
             else
                 render json: {errors: "Champion not found!"}, status: :not_found
             end
-        else
-            render json: {errors: "Must be logged in to view champions!"}, status: :unauthorized
-        end
-    end
-    
+        # else
+        #     render json: {errors: "Must be logged in to view champions!"}, status: :unauthorized
+        # end
+    end 
 
 end
