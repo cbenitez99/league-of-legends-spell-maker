@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, useNavigate} from 'react-router-dom'
 //remove line 9, 14? 
-function Navbar({onLogout}) {
+function Navbar({user, setUser}) {
     let navigate = useNavigate();
     return (
         <div>
@@ -9,21 +9,35 @@ function Navbar({onLogout}) {
                 <div className="nav-wrapper">
                 <a href="/" className="brand-logo">HOME</a>  
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
-                        <li><NavLink to="/login">Login</NavLink></li>
-                        <li><NavLink to="/signup">Signup</NavLink></li>
+                        {/* <li><NavLink to="/login">Login</NavLink></li>
+                        <li><NavLink to="/signup">Signup</NavLink></li> */}
                         {/* <li><NavLink to="/champions">Champion List</NavLink></li> */}
-                        <li><NavLink to="/champions/abilities/new">Create Ability</NavLink></li>
-                        <li><a href="/login" onClick={(e) => {
+                        {/* <li><NavLink to="/champions/abilities/new">Create Ability</NavLink></li> */}
+                        {!!user.id ? 
+                        <div className="nav-wrapper">
+                            <li><NavLink to={`/users/${user.id}`}>Profile</NavLink></li>
+                            <li><NavLink to="/champions/abilities/new">Create Ability</NavLink></li>
+
+                            <li><a href="/delete" onClick={(e) => {
                                 e.preventDefault()
                                 fetch('/logout', {
                                     method: "DELETE",
-                                    headers: { "Content-Type": "application/json" }
+                                    headers: {
+                                        "Accept": "application/json",
+                                        "Content-Type": "application/json"
+                                    }
                                 }).then(resp => {
-                                    console.log(resp)
-                                     onLogout({resp})
-                                    //  navigate("/login") 
-                        })}}>Logout</a>
-                        </li>
+                                    setUser({})
+                                    navigate("/")
+                                })
+                            }}>Logout</a></li>
+                        </div>
+                        :
+                        <div>
+                            <li><NavLink to="/signup" >Signup</NavLink></li>
+                            <li><NavLink to="/login" >Login</NavLink></li>
+                        </div>
+                        }
                     </ul>
                 </div>
             </nav>
@@ -31,5 +45,4 @@ function Navbar({onLogout}) {
     )
 }
 export default Navbar;
-
 

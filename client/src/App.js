@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react"
 import { Routes, Route } from "react-router-dom";
+import UsersContainer from "./containers/UsersContainer";
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import Navbar from "./components/Navbar";
@@ -36,16 +37,17 @@ function App() {
 
     return (
       <div>
-          <Navbar user={user} onLogout={setUser}/>
+          <Navbar user={user} setUser={setUser}/>
             <main>
               <Routes>
                 <Route path="/champions/:id/abilities/new" element={<AbilityCreateForm champions={champions} setChampions={setChampions}/>}></Route>
                 <Route exact path="/champions/:id/edit" element={<AbilityEditForm />}></Route>
                 <Route exact path="/champions/:id" element={<Ability champions={champions}/>}></Route>
                 <Route exact path="/champions" element={<Champion champions={champions}/>}></Route>
-                <Route exact path="/login" element={<LoginForm user={user} setUser={setUser}/>}></Route>
-                <Route exact path="/signup" element={<SignupForm user={user} setUser={setUser}/>}></Route>
+                <Route exact path="/login" element={<LoginForm setUser={setUser}/>}></Route>
+                <Route exact path="/signup" element={<SignupForm setUser={setUser}/>}></Route>
                 <Route exact path="/" element={<Home/>} ></Route>
+                <Route exact path="users/*" element={<UsersContainer user={user}/>}/>
               </Routes>
             </main>
       </div>

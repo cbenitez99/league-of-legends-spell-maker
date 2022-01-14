@@ -7,7 +7,7 @@ function LoginForm({setUser}) {
 
     const [formData, setFormData] = useState({
         username: "",
-        password_digest: ""
+        password: ""
     })
 
 
@@ -28,15 +28,15 @@ function LoginForm({setUser}) {
         fetch("/login", {
             method: "POST",
             headers: {
+                "Accept": "application/json",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(params)
         })
         .then(resp => resp.json())
         .then(json => {
-            console.log(json)
-            // setUser(json)
-            navigate(`/champions`)
+            setUser(json)
+            navigate(`/users/${json.id}`)
         })
     }
 
@@ -47,7 +47,7 @@ function LoginForm({setUser}) {
                 <label htmlFor="username">Username:</label>
                 <input onChange={handleChange} type="text" name="username" value={formData.username}/>
                 <label htmlFor="password">Password:</label>
-                <input onChange={handleChange} type="password" name="password_digest" value={formData.password_digest}/>
+                <input onChange={handleChange} type="password" name="password" value={formData.password}/>
                 <button type="submit">Log in</button>
             </form>
         </div>

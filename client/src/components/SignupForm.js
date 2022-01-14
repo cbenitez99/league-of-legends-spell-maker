@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 function SignupForm({setUser}) {
     let navigate = useNavigate()
     const {id} = useParams()
-
+    const [errors, setErrors] = useState([]);
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -27,15 +27,15 @@ function SignupForm({setUser}) {
         fetch("/users", {
             method: "POST",
             headers: {
+                "Accept": "application/json",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(params)
         })
         .then(resp => resp.json())
         .then(json => {
-            console.log(json)
-            // setUser(json)
-            // navigate(`/login`)
+            setUser(json)
+            navigate(`/users/${json.id}`)
         })
     }
 
@@ -48,7 +48,9 @@ function SignupForm({setUser}) {
                 <label htmlFor="password">Create Password:</label>
                 <input onChange={handleChange} type="password" name="password" value={formData.password}/>
                 <button type="submit">Sign Up</button>
+              
             </form>
+            {errors.errors}
         </div>
     )
 }
