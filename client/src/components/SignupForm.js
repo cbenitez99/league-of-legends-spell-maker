@@ -34,8 +34,8 @@ function SignupForm({setUser}) {
         .then(resp => resp.json())
         .then(json => {
             console.log(json)
-            setUser(json)
-            navigate(`/login`)
+            // setUser(json)
+            // navigate(`/login`)
         })
     }
 

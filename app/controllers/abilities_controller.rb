@@ -3,7 +3,7 @@ class AbilitiesController < ApplicationController
     def index
         abilities = Ability.all
         if abilities
-            render json: abilities, include: :champions, status: :ok
+            render json: abilities, include: :champion, status: :ok
         else
             render json: {error: "No abilities here!"}, status: :not_found
         end
@@ -39,17 +39,18 @@ class AbilitiesController < ApplicationController
 
     def create
         ability = Ability.new(ability_params)
+        # byebug
         if ability.save
             render json: ability, status: :created
         else
-            render json: {errors: ability.errors.full_messages}, status: :unprocessable_entity
+            render json: {errors: "Ability not saved"}, status: :unprocessable_entity
         end
     end
 
     private 
 
     def ability_params
-        params.permit(:name, :description)
+        params.require(:ability).permit(:name, :description, :user_id, :champion_id)
     end
 
     def find_ability

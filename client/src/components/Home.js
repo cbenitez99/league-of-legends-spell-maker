@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Home({user}) {
-  console.log(user)
+  // console.log(user)
 
-  if (!!user){
+  if (user){
     return(
       <div id="home">
         <main>

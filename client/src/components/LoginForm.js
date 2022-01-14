@@ -35,8 +35,8 @@ function LoginForm({setUser}) {
         .then(resp => resp.json())
         .then(json => {
             console.log(json)
-            setUser({json})
-            navigate(`/`)
+            // setUser(json)
+            // navigate(`/`)
         })
     }
 

@@ -43,7 +43,7 @@ function App() {
                 <Route exact path="/champions/:id/edit" element={<AbilityEditForm />}></Route>
                 <Route exact path="/champions/:id" element={<Ability champions={champions}/>}></Route>
                 <Route exact path="/champions" element={<Champion champions={champions}/>}></Route>
-                <Route exact path="/login" element={<LoginForm setUser={setUser}/>}></Route>
+                <Route exact path="/login" element={<LoginForm user={user} setUser={setUser}/>}></Route>
                 <Route exact path="/signup" element={<SignupForm user={user} setUser={setUser}/>}></Route>
                 <Route exact path="/" element={<Home/>} ></Route>
               </Routes>

@@ -1,23 +1,15 @@
-import React, {useState, useEffect} from 'react'
-import {useNavigate, useParams} from "react-router-dom"
+import React, {useState} from 'react'
+// import {useNavigate} from "react-router-dom"
 
-function AbilityCreateForm({champions}) {
+function AbilityCreateForm() {
+    
+    // const [champion, setChampion] = useState([])
 
-  const {id} = useParams()
-  const [champion, setChampion] = useState([])
-
-  // if(!!champions) {
-  //   let selectedChampion = champions.find((champion) => champion.id === Number(id))
-  //   setChampion({...selectedChampion})
-  // }
-
-  
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: "",
-        description: "",
-        champion_id: champion.id
+        description: ""
     })
 
     const handleChange = (e) => {
@@ -44,7 +36,7 @@ function AbilityCreateForm({champions}) {
         .then(resp => resp.json())
         .then(json => {
             console.log(json)
-            navigate(`/champions/${id}`)
+            // navigate(`/champions/${id}`)
             
         })
     }
