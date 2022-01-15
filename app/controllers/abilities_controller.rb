@@ -39,11 +39,11 @@ class AbilitiesController < ApplicationController
 
     def create
         ability = Ability.new(ability_params)
-        ability.id = Ability.last.id + 1
-        ability.user_id = session[:user_id]
-        ability.champion_id = Champion.last.id + 1
+            # ability.id = Ability.last.id + 1
+            # ability.user_id = session[:user_id]
+            # ability.champion_id = Champion.last.id + 1
         if ability.save
-            render json: ability, except: [:created_at, :updated_at], status: :created
+            render json: ability, include: :champion, except: [:created_at, :updated_at], status: :created
         else
             render json: {errors: "Ability not saved"}, status: :unprocessable_entity
         end

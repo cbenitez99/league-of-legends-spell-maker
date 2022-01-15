@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 // import {useNavigate} from "react-router-dom"
-
+//create ability with champion id and user id
 function AbilityCreateForm({champions}) {
     
     const [champion, setChampion] = useState([])
@@ -17,7 +17,9 @@ function AbilityCreateForm({champions}) {
 
     const [formData, setFormData] = useState({
         name: "",
-        description: ""
+        description: "",
+        // champion_id: '', //CHAMPION.ID
+        // user_id: ''      //USER.ID 
     })
 
     const handleChange = (e) => {
