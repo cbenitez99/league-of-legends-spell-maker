@@ -15,7 +15,7 @@ function Navbar({user, setUser}) {
                         {!!user.id ? 
                         <div className="nav-wrapper">
                             <li><NavLink to={`/users/${user.id}`}>Profile</NavLink></li>
-                            <li><NavLink to="/champions/abilities/new">Create Ability</NavLink></li>
+                            {/* <li><NavLink to="/champions/abilities/new">Create Ability</NavLink></li> */}
 
                             <li><a href="/delete" onClick={(e) => {
                                 e.preventDefault()

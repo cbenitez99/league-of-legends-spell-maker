@@ -15,13 +15,14 @@ function Ability({champions}) {
     return (
         <div>
             {!!champion.id ? 
-            <div>{champion.abilities.map((champAbility)=>
+            <div>{champion.abilities.map((champAbility)=> champAbility &&
                 <div key={champAbility.id}>
                     <h1>{champAbility.name}</h1>
                     <p>{champAbility.description}</p>
                     <NavLink to={`/champions/${champion.id}/edit`}>Edit Ability</NavLink>
                     <br/>
-                    <NavLink to={`/champions/${champion.id}/abilities/new`}>Add New Ability</NavLink>
+                    <NavLink to={`/champions/${champAbility.id}/abilities/new`}>Add New Ability</NavLink>
+                    {console.log(champAbility)}
                 </div>
                 )}
             </div> : 

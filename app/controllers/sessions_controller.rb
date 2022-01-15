@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :created
         else
-            render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+            render json: {errors: "could not login"}, status: :unprocessable_entity
         end
     end
 

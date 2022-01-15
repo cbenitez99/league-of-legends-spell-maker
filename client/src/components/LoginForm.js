@@ -33,12 +33,18 @@ function LoginForm({setUser}) {
             },
             body: JSON.stringify(params)
         })
-        .then(resp => resp.json())
-        .then(json => {
-            setUser(json)
-            navigate(`/users/${json.id}`)
+        .then(resp => {
+            if(resp.ok){
+                resp.json()
+                .then((json) => {
+                    setUser(json)
+                    navigate(`/users/${json.id}`)
+                })
+            } else {
+                alert("Please check your login info!")
+            }
         })
-    }
+    };
 
     return (
         <div className="text-white">
