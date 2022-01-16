@@ -38,6 +38,7 @@ class AbilitiesController < ApplicationController
     end
 
     def create
+        byebug
         ability = Ability.new(ability_params)
             # ability.id = Ability.last.id + 1
             # ability.user_id = session[:user_id]

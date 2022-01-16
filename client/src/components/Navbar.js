@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink, useNavigate} from 'react-router-dom'
-//remove line 9, 14? 
 function Navbar({user, setUser}) {
     let navigate = useNavigate();
     return (
@@ -15,8 +14,6 @@ function Navbar({user, setUser}) {
                         {!!user.id ? 
                         <div className="nav-wrapper">
                             <li><NavLink to={`/users/${user.id}`}>Profile</NavLink></li>
-                            {/* <li><NavLink to="/champions/abilities/new">Create Ability</NavLink></li> */}
-
                             <li><a href="/delete" onClick={(e) => {
                                 e.preventDefault()
                                 fetch('/logout', {
@@ -30,7 +27,6 @@ function Navbar({user, setUser}) {
                                     navigate("/")
                                 })
                             }}>Logout</a></li>
-                        <li><NavLink to="/champions">Champion List</NavLink></li>
 
                         </div>
                         :

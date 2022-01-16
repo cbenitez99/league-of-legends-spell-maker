@@ -1,26 +1,34 @@
-import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import React, {useState} from 'react'
+// import {useParams} from 'react-router-dom'
 // import {useNavigate} from "react-router-dom"
 //create ability with champion id and user id
 function AbilityCreateForm({champions}) {
     
-    const [champion, setChampion] = useState([])
-    const {id} = useParams()
+    // const [champion, setChampion] = useState([])
 
-    useEffect(()=>{
-        if(!!champions) {
-            let selectedChampion = champions.find((champion) => champion.id === Number(id))
-            setChampion({...selectedChampion})
-        }
-    }, [setChampion, id, champions])
+    // useEffect(()=>{
+    //     if(!!champions) {
+    //         let selectedChampion = champions.find((champion) => champion.id === Number(id))
+    //         setChampion({...selectedChampion})
+    //     }
+    // }, [setChampion, id, champions])
     // let navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
+    // const [abilities, setAbilities] = useState([]);
+    // useEffect(() => {
+    //     fetch(`abilities`)
+    //     .then((r) => r.json())
+    //     .then((data) => {
+    //         setAbilities(data)
+    //     })
+    // }, []);
+
+    const [formData, setFormData] = useState([{
         name: "",
         description: "",
         // champion_id: '', //CHAMPION.ID
         // user_id: ''      //USER.ID 
-    })
+    }])
 
     const handleChange = (e) => {
         setFormData(prev => {
@@ -38,16 +46,15 @@ function AbilityCreateForm({champions}) {
         }
         fetch("/abilities", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(params)
         })
-        .then(resp => resp.json())
-        .then(json => {
-            console.log(json)
-            // navigate(`/champions/${id}`)
-            
+        .then((r) => {
+            if(r.ok){
+                alert("Ability created")
+            } else {
+                console.log(r);
+            }
         })
     }
 

@@ -37,6 +37,7 @@ function LoginForm({setUser}) {
             if(resp.ok){
                 resp.json()
                 .then((json) => {
+                    console.log(json)
                     setUser(json)
                     navigate(`/users/${json.id}`)
                 })
