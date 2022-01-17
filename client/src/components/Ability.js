@@ -20,10 +20,12 @@ function Ability({champions, abilities}) {
                 <div key={champAbility.id}>
                     <h1>{champAbility.name}</h1>
                     <p>{champAbility.description}</p>
-                    <NavLink to={`/champions/${champion.id}/edit`}>Edit Ability</NavLink>
+                    <NavLink to={`/champions/${champAbility.id}/edit`}>Edit Ability</NavLink>
                     <br/>
                     <NavLink to={`/champions/${champAbility.id}/abilities/new`}>Add New Ability</NavLink>
-                    {console.log(abilities)}
+                    {/* {console.log(abilities)} */}
+                    {/* {console.log(champAbility)} LOOK AT THESE AND THINK ABOUT WAYS TO GRAB THE ID's! */} 
+                    {/* {console.log(champion)} */}
                 </div>
                 )}
             </div> : 

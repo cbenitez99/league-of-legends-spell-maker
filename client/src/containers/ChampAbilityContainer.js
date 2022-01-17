@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router'
+// import { useParams } from 'react-router'
 import Ability from '../components/Ability'
 //pass a prop to see ability stats
 export default function ChampAbilityContainer({champions}) {
     const [abilities, setAbilities] = useState([])
-    const {id} = useParams()
 
     useEffect(() => {
         fetch("/abilities")
