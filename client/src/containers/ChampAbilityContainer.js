@@ -1,20 +1,22 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router'
 import Ability from '../components/Ability'
-//pass champAbility to Ability as prop to see ability stats
-export default function ChampAbilityContainer({mappedChampion}) {
-    // const [champion, setChampion] = useState([])
-    // const {id} = useParams()
+//pass a prop to see ability stats
+export default function ChampAbilityContainer({champions}) {
+    const [abilities, setAbilities] = useState([])
+    const {id} = useParams()
 
-    // useEffect(()=>{
-    //     if(!!champions) {
-    //         let selectedChampion = champions.find((champion) => champion.id === Number(id))
-    //         setChampion({...selectedChampion})
-    //     }
-    // }, [setChampion, id, champions])
+    useEffect(() => {
+        fetch("/abilities")
+          .then((r) => r.json())
+          .then((data) => {
+              setAbilities(data)
+          });
+      }, []);
     
     return ( 
         <div>
+            <Ability champions={champions} abilities={abilities}/>
             {/* {!!champion.id ? 
             <div>{champion.abilities.map((champAbility)=> 
                 <div key={champAbility.id}>
@@ -28,7 +30,6 @@ export default function ChampAbilityContainer({mappedChampion}) {
                 )}
             </div> : 
             <div>Loading...</div>} */}
-            <Ability mappedChampion={mappedChampion}/>
         </div>        
     )
 }

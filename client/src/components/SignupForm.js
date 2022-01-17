@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 function SignupForm({setUser}) {
     let navigate = useNavigate()
-    const {id} = useParams()
-    const [errors, setErrors] = useState([]);
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -32,10 +30,16 @@ function SignupForm({setUser}) {
             },
             body: JSON.stringify(params)
         })
-        .then(resp => resp.json())
-        .then(json => {
-            setUser(json)
-            navigate(`/users/${json.id}`)
+        .then(resp => {
+            if(resp.ok){
+                resp.json()
+                .then((json) => {
+                    setUser(json)
+                    navigate(`/users/${json.id}`)
+                })
+            } else {
+                alert("Make sure password is at least 5 characters long! Also username could be taken!")
+            }
         })
     }
 
@@ -48,9 +52,7 @@ function SignupForm({setUser}) {
                 <label htmlFor="password">Create Password:</label>
                 <input onChange={handleChange} type="password" name="password" value={formData.password}/>
                 <button type="submit">Sign Up</button>
-              
             </form>
-            {errors.errors}
         </div>
     )
 }

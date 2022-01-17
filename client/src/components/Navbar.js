@@ -6,7 +6,7 @@ function Navbar({user, setUser}) {
         <div>
             <nav className='black'>
                 <div className="nav-wrapper">
-                <a href="/" className="brand-logo">HOME</a>  
+                {/* <a href="/" className="brand-logo">HOME</a>   */}
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         {/* <li><NavLink to="/login">Login</NavLink></li>
                         <li><NavLink to="/signup">Signup</NavLink></li> */}
@@ -14,6 +14,8 @@ function Navbar({user, setUser}) {
                         {!!user.id ? 
                         <div className="nav-wrapper">
                             <li><NavLink to={`/users/${user.id}`}>Profile</NavLink></li>
+                            <li><NavLink to={`/`}>Home</NavLink></li>
+
                             <li><a href="/delete" onClick={(e) => {
                                 e.preventDefault()
                                 fetch('/logout', {
@@ -23,7 +25,7 @@ function Navbar({user, setUser}) {
                                         "Content-Type": "application/json"
                                     }
                                 }).then(resp => {
-                                    setUser({})
+                                    setUser({resp})
                                     navigate("/")
                                 })
                             }}>Logout</a></li>

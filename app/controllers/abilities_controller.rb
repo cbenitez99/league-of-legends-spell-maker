@@ -3,7 +3,7 @@ class AbilitiesController < ApplicationController
     def index
         abilities = Ability.all
         if abilities
-            render json: abilities, include: :champion, status: :ok
+            render json: abilities, except: [:created_at, :updated_at], status: :ok
         else
             render json: {error: "No abilities here!"}, status: :not_found
         end
@@ -12,7 +12,7 @@ class AbilitiesController < ApplicationController
     def show
         ability = find_ability
         if ability
-            render json: ability, status: :ok
+            render json: ability, except: [:created_at, :updated_at], status: :ok
         else
             render json: {error: "Ability not found"}, status: :not_found
         end
@@ -21,7 +21,7 @@ class AbilitiesController < ApplicationController
     def update
         ability = find_ability
         if ability.update(ability_params)
-            render json: ability, status: :ok
+            render json: ability, except: [:created_at, :updated_at], status: :ok
         else
             render json: {errors: ability.errors.full_messages}, status: :unprocessable_entity
         end

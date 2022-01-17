@@ -2,11 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 function Home({user}) {
-  // console.log(user)
 
   if (!!user){
     return(
-      <div id="home">
+      <div>
         <main>
           <h1>Welcome to the LoL Summoner Spell Maker!</h1>
           <h3>Summon your champion!</h3>
@@ -18,14 +17,10 @@ function Home({user}) {
     );
   } else {
     return (
-      <div id="home">
-        <main>
+      <div>
+        
           <h1>Welcome to the LoL Summoner Spell Maker!</h1>
-          <h3>Please Login or Signup to Continue!</h3>
-        </main>
-        {/* <NavLink to={`/login`}>Login</NavLink>
-        <br/>
-        <NavLink to={`/signup`}>Signup</NavLink> */}
+          
       </div>
     );
   }
