@@ -38,11 +38,7 @@ class AbilitiesController < ApplicationController
     end
 
     def create
-        byebug
         ability = Ability.new(ability_params)
-            # ability.id = Ability.last.id + 1
-            # ability.user_id = session[:user_id]
-            # ability.champion_id = Champion.last.id + 1
         if ability.save
             render json: ability, include: :champion, except: [:created_at, :updated_at], status: :created
         else

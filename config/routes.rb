@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :abilities, only: [:index, :show, :destroy, :create]
   patch '/abilities/:id', to: "abilities#update"
   post "/login", to: "sessions#create"
-  # post "/champions/:id/abilities", to: "champions#new_ability"
+  # post "/abilities", to: "abilities#create"
   delete "/logout", to: "sessions#destroy"
 
   # Routing logic: fallback requests for React Router.

@@ -1,35 +1,18 @@
 import React, {useState} from 'react'
-// import {useParams} from 'react-router-dom'
+import {useNavigate, useLocation} from 'react-router-dom'
 // import {useNavigate} from "react-router-dom"
 //create ability with champion id and user id
-function AbilityCreateForm({champions}) {
-    
-    // const [champion, setChampion] = useState([])
-
-    // useEffect(()=>{
-    //     if(!!champions) {
-    //         let selectedChampion = champions.find((champion) => champion.id === Number(id))
-    //         setChampion({...selectedChampion})
-    //     }
-    // }, [setChampion, id, champions])
-    // let navigate = useNavigate();
-
-    // const [abilities, setAbilities] = useState([]);
-    // useEffect(() => {
-    //     fetch(`abilities`)
-    //     .then((r) => r.json())
-    //     .then((data) => {
-    //         setAbilities(data)
-    //     })
-    // }, []);
-
-    const [formData, setFormData] = useState([{
+function AbilityCreateForm({user, setAbilities}) {
+    const location = useLocation()
+    const { champion } = location.state
+    let navigate = useNavigate()
+    const [formData, setFormData] = useState({
         name: "",
         description: "",
-        // champion_id: '', //CHAMPION.ID
-        // user_id: ''      //USER.ID 
-    }])
-
+        champion_id: champion.id,
+        user_id: user.id
+    })
+   
     const handleChange = (e) => {
         setFormData(prev => {
             return {
@@ -46,17 +29,25 @@ function AbilityCreateForm({champions}) {
         }
         fetch("/abilities", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(params)
         })
-        .then((r) => {
-            if(r.ok){
-                alert("Ability created")
+        .then(resp => {
+            if(resp.ok){
+                resp.json()
+                .then((json) => {
+                    console.log(json)
+                    setAbilities(json)
+                    navigate(`/users/${json.id}`)
+                })
             } else {
-                console.log(r);
+                console.log(resp)
             }
         })
-    }
+    };
 
     return (
         <div className="text-white">

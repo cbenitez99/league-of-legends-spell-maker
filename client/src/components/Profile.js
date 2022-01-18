@@ -21,9 +21,6 @@ export default function Profile({user}) {
               <h1>Welcome to the LoL Summoner Spell Maker!</h1>
               <h3>Please Login or Signup to Continue!</h3>
             </main>
-            {/* <NavLink to={`/login`}>Login</NavLink>
-            <br/>
-            <NavLink to={`/signup`}>Signup</NavLink> */}
           </div>
         );
       }

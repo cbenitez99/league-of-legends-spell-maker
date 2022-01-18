@@ -1,18 +1,8 @@
-import { React, useState, useEffect} from 'react';
-import {NavLink, useParams} from "react-router-dom"
+import { React } from 'react';
+import {NavLink, useNavigate} from "react-router-dom"
 
-function Ability({champions, abilities}) {
-
-    const [champion, setChampion] = useState([])
-    const {id} = useParams()
-
-    useEffect(()=>{
-        if(!!champions) {
-            let selectedChampion = champions.find((champion) => champion.id === Number(id))
-            setChampion({...selectedChampion})
-        }
-    }, [champions, id])
-  
+function Ability({champion, setAbilities}) {
+    let navigate = useNavigate();
     return (
         <div>
             {!!champion.id ? 
@@ -22,10 +12,25 @@ function Ability({champions, abilities}) {
                     <p>{champAbility.description}</p>
                     <NavLink to={`/champions/${champAbility.id}/edit`}>Edit Ability</NavLink>
                     <br/>
-                    <NavLink to={`/champions/${champAbility.id}/abilities/new`}>Add New Ability</NavLink>
-                    {/* {console.log(abilities)} */}
-                    {/* {console.log(champAbility)} LOOK AT THESE AND THINK ABOUT WAYS TO GRAB THE ID's! */} 
-                    {/* {console.log(champion)} */}
+                    {/* <NavLink champion={champion} to={`/champions/${champAbility.id}/abilities/new`} >Add New Ability</NavLink> */}
+                    <NavLink to={`/champions/${champion.id}/abilities/new`} state={{ champion: champion }}>Add new ability</NavLink>
+                    <br/>
+                        <button onClick={(e) => {
+                                e.preventDefault()
+                                fetch(`/abilities/${champAbility.id}`, {
+                                    method: "DELETE",
+                                    headers: {
+                                        "Accept": "application/json",
+                                        "Content-Type": "application/json"
+                                    }
+                                }).then(resp => {
+                                    navigate("/champions")
+                                    console.log(resp)
+                                })
+                            }}>DELETE
+                        </button>
+                    
+                    {/* <NavLink to={ {pathname:`/champions/${champAbility.id}/abilities/new`, aboutProps:{champion:champion.id} } }exact={champion}>Preview Question</NavLink> */}
                 </div>
                 )}
             </div> : 
