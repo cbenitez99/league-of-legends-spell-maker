@@ -3,6 +3,7 @@ import {useNavigate, useLocation} from 'react-router-dom'
 // import {useNavigate} from "react-router-dom"
 //create ability with champion id and user id
 function AbilityCreateForm({user, setAbilities}) {
+   
     const location = useLocation()
     const { champion } = location.state
     let navigate = useNavigate()
@@ -39,8 +40,7 @@ function AbilityCreateForm({user, setAbilities}) {
             if(resp.ok){
                 resp.json()
                 .then((json) => {
-                    console.log(json)
-                    setAbilities(json)
+                    alert("Created!")
                     navigate(`/users/${json.id}`)
                 })
             } else {
@@ -48,6 +48,7 @@ function AbilityCreateForm({user, setAbilities}) {
             }
         })
     };
+    
 
     return (
         <div className="text-white">

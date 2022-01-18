@@ -1,7 +1,7 @@
 import { React } from 'react';
 import {NavLink, useNavigate} from "react-router-dom"
 
-function Ability({champion, setAbilities}) {
+function Ability({champion}) {
     let navigate = useNavigate();
     return (
         <div>
@@ -15,8 +15,7 @@ function Ability({champion, setAbilities}) {
                     {/* <NavLink champion={champion} to={`/champions/${champAbility.id}/abilities/new`} >Add New Ability</NavLink> */}
                     <NavLink to={`/champions/${champion.id}/abilities/new`} state={{ champion: champion }}>Add new ability</NavLink>
                     <br/>
-                        <button onClick={(e) => {
-                                e.preventDefault()
+                        <button onClick={() => {
                                 fetch(`/abilities/${champAbility.id}`, {
                                     method: "DELETE",
                                     headers: {

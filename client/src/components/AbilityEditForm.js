@@ -48,9 +48,10 @@ function AbilityEditForm() {
         });
   };
 
-  function refreshPage() {
-    window.location.reload(true);
-  }
+  // function refreshPage(e) {
+  //   e.preventDefault()
+  //   window.location.reload(true);
+  // }
       
   return (
     <form onSubmit={handleSubmit}>
@@ -68,7 +69,7 @@ function AbilityEditForm() {
             ))
           : null}
         <br/>
-      <button onClick={() => refreshPage()} type="submit">Update Ability</button>
+      <button type="submit">Update Ability</button>
     </form>
     )
 }
